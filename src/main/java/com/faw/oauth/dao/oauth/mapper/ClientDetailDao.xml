@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.faw.oauth.dao.oauth.ClientDetailDao">
+    <select id="loadClientByClientId" resultType="com.faw.oauth.domian.entity.ClientDetail">
+        select * from faw_client_details_t
+        <where>
+            client_id = #{clientId}
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,94 @@
+spring:
+  application:
+    name:
+  #  profiles:
+#    active: dev
+  datasource:
+    user:
+      jdbcUrl: jdbc:mysql://127.0.0.1:3306/faw_rbac?useUnicode=true&characterEncoding=utf8&useSSL=false
+      username: root
+      password: root
+      driverClassName: com.mysql.jdbc.Driver
+      cachePrepStmts: true
+      prepStmtCacheSize: 250
+      prepStmtCacheSqlLimit: 2048
+      useServerPrepStmts: true
+      useLocalSessionState: true
+      useLocalTransactionState: true
+      rewriteBatchedStatements: true
+      cacheResultSetMetadata: true
+      cacheServerConfiguration: true
+      elideSetAutoCommits: true
+      maintainTimeStats: false
+      connectionTestQuery: SELECT 1
+      poolName: HikariCP
+      minIdle: 5
+      maxActive: 30
+      idleTimeout: 60000
+      connectionTimeout: 30000
+      maxLifetime: 90000
+      readOnly: false
+      logAbandoned: true
+      removeAbandonedTimeout: 1800
+    oauth:
+      jdbcUrl: jdbc:mysql://127.0.0.1:3306/faw_oauth?useUnicode=true&characterEncoding=utf8&useSSL=false
+      username: root
+      password: root
+      driverClassName: com.mysql.jdbc.Driver
+      cachePrepStmts: true
+      prepStmtCacheSize: 250
+      prepStmtCacheSqlLimit: 2048
+      useServerPrepStmts: true
+      useLocalSessionState: true
+      useLocalTransactionState: true
+      rewriteBatchedStatements: true
+      cacheResultSetMetadata: true
+      cacheServerConfiguration: true
+      elideSetAutoCommits: true
+      maintainTimeStats: false
+      connectionTestQuery: SELECT 1
+      poolName: HikariCP
+      minIdle: 5
+      maxActive: 30
+      idleTimeout: 60000
+      connectionTimeout: 30000
+      maxLifetime: 90000
+      readOnly: false
+      logAbandoned: true
+      removeAbandonedTimeout: 1800
+
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    pool:
+      max-idle: 100
+      min-idle: 1
+      max-active: 1000
+      max-wait: -1
+
+mybatis-plus:
+  mapper-locations: classpath:com/faw/oauth/dao/*/mapper/*Dao.xml
+  #mybatis
+  #\u5B9E\u4F53\u626B\u63CF\uFF0C\u591A\u4E2Apackage\u7528\u9017\u53F7\u6216\u8005\u5206\u53F7\u5206\u9694
+  typeAliasesPackage: com.faw.oauth.domian.entity
+  global-config:
+    # \u6570\u636E\u5E93\u76F8\u5173\u914D\u7F6E
+    db-config:
+      #\u4E3B\u952E\u7C7B\u578B  AUTO:"\u6570\u636E\u5E93ID\u81EA\u589E", INPUT:"\u7528\u6237\u8F93\u5165ID",ID_WORKER:"\u5168\u5C40\u552F\u4E00ID (\u6570\u5B57\u7C7B\u578B\u552F\u4E00ID)", UUID:"\u5168\u5C40\u552F\u4E00ID UUID";
+      id-type: ID_WORKER
+      #\u5B57\u6BB5\u7B56\u7565 IGNORED:"\u5FFD\u7565\u5224\u65AD",NOT_NULL:"\u975E NULL \u5224\u65AD"),NOT_EMPTY:"\u975E\u7A7A\u5224\u65AD"
+      field-strategy: NOT_EMPTY
+      #\u9A7C\u5CF0\u4E0B\u5212\u7EBF\u8F6C\u6362
+      column-underline: true
+      #\u6570\u636E\u5E93\u5927\u5199\u4E0B\u5212\u7EBF\u8F6C\u6362
+      #capital-mode: true
+      #\u903B\u8F91\u5220\u9664\u914D\u7F6E
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      db-type: mysql
+    #\u5237\u65B0mapper \u8C03\u8BD5\u795E\u5668
+    refresh: false
+  # \u539F\u751F\u914D\u7F6E
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
